@@ -60,4 +60,5 @@
 #     # password: "please use keys"
 #   }
 set :deploy_to, '/home/oshop'
+set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 server 'www.ohmate.com.cn', roles: [:web], user: 'root'
