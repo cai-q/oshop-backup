@@ -51,4 +51,4 @@ production:
   <<: *default
   database: oshop_production
   username: oshop
-  password: <%= ENV['OSHOP_DATABASE_PASSWORD'] %>
+  password: root
