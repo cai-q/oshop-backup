@@ -63,6 +63,9 @@ set :deploy_to, '/home/oshop'
 set :linked_files, fetch(:linked_files, []).push('config/database.yml')
 set :linked_files, fetch(:linked_files, []).push('config/application.yml')
 
+set :linked_dirs, fetch(:linked_dirs, []).push('log', 'tmp/pids', 'tmp/cache', 'tmp/sockets', 'vendor/bundle', 'public/system', 'public/uploads')
+
+
 set :nginx_config_name, "#{fetch(:application)}_#{fetch(:stage)}.conf"
 set :nginx_sites_available_path, '/usr/local/nginx/conf/sites_available'
 set :nginx_sites_enabled_path, '/usr/local/nginx/conf/vhost'
