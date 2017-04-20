@@ -61,4 +61,17 @@
 #   }
 set :deploy_to, '/home/oshop'
 set :linked_files, fetch(:linked_files, []).push('config/database.yml')
+set :linked_files, fetch(:linked_files, []).push('config/application.yml')
+
+set :nginx_config_name, "#{fetch(:application)}_#{fetch(:stage)}.conf"
+set :nginx_sites_available_path, '/usr/local/nginx/conf/sites_available'
+set :nginx_sites_enabled_path, '/usr/local/nginx/conf/vhost'
+set :nginx_server_name, 'shop.ohmate.com.cn'
+
 server 'www.ohmate.com.cn', roles: [:web], user: 'root'
+
+namespace :deploy do
+  before 'check:linked_files', 'puma:config'
+  before 'check:linked_files', 'puma:nginx_config'
+  after 'puma:smart_restart', 'nginx:restart'
+end
