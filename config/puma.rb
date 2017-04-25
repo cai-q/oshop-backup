@@ -9,23 +9,25 @@ threads threads_count, threads_count
 
 # Specifies the `port` that Puma will listen on to receive requests, default is 3000.
 #
-port        ENV.fetch("PORT") { 2000 }
+port ENV.fetch("PORT") { 2000 }
 app_dir = File.expand_path("../..")
 shared_dir = "#{app_dir}/shared"
 
 # Specifies the `environment` that Puma will run in.
 #
 environment ENV.fetch("RAILS_ENV") { "production" }
-# Set up socket location
-bind "unix://#{shared_dir}/tmp/sockets/puma.sock"
+
+if ENV.fetch("RAILS_ENV") == 'production'
+  # Set up socket location
+  bind "unix://#{shared_dir}/tmp/sockets/puma.sock"
 
 # Logging
-stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
+  stdout_redirect "#{shared_dir}/log/puma.stdout.log", "#{shared_dir}/log/puma.stderr.log", true
 
 # Set master PID and state locations
-pidfile "#{shared_dir}/tmp/pids/puma.pid"
-state_path "#{shared_dir}/tmp/pids/puma.state"
-activate_control_app
+  pidfile "#{shared_dir}/tmp/pids/puma.pid"
+  state_path "#{shared_dir}/tmp/pids/puma.state"
+  activate_control_app
 
 
 # Specifies the number of `workers` to boot in clustered mode.
@@ -34,7 +36,7 @@ activate_control_app
 # Workers do not work on JRuby or Windows (both of which do not support
 # processes).
 #
-workers ENV.fetch("WEB_CONCURRENCY") { 4 }
+  workers ENV.fetch("WEB_CONCURRENCY") { 4 }
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
@@ -57,4 +59,6 @@ workers ENV.fetch("WEB_CONCURRENCY") { 4 }
 # end
 
 # Allow puma to be restarted by `rails restart` command.
-plugin :tmp_restart
+  plugin :tmp_restart
+
+end

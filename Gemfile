@@ -63,3 +63,5 @@ gem 'spree_gateway', '~> 3.2.0.beta'
 
 gem 'figaro'
 gem 'listen', '~> 3.0.5'
+
+gem 'omniauth-open_wechat'
