@@ -17,7 +17,7 @@ shared_dir = "#{app_dir}/shared"
 #
 environment ENV.fetch("RAILS_ENV") { "production" }
 
-if Rails.env == 'production'
+if ENV.fetch("RAILS_ENV") { "production" } == 'production'
   # Set up socket location
   bind "unix://#{shared_dir}/tmp/sockets/puma.sock"
 
