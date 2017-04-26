@@ -65,3 +65,4 @@ gem 'figaro'
 gem 'listen', '~> 3.0.5'
 
 gem 'omniauth-open_wechat'
+gem 'spree_social', github: 'spree-contrib/spree_social'
