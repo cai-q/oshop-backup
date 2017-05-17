@@ -1,6 +1,7 @@
 GIT
   remote: https://github.com/spree-contrib/spree_social.git
-  revision: 874031b56865c0c6d52d3785ce32696ae3d5a2de
+  revision: faa87f6a8ee493c739abb391b1856a50e8038f91
+  branch: master
   specs:
     spree_social (3.2.0.alpha)
       oa-core
@@ -72,12 +73,19 @@ GEM
     awesome_nested_set (3.1.2)
       activerecord (>= 4.0.0, < 5.1)
     bcrypt (3.1.11)
+    better_errors (2.1.1)
+      coderay (>= 1.0.0)
+      erubis (>= 2.6.6)
+      rack (>= 0.9.0)
     bindex (0.5.0)
+    binding_of_caller (0.7.2)
+      debug_inspector (>= 0.0.1)
     bootstrap-sass (3.3.7)
       autoprefixer-rails (>= 5.2.1)
       sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.0.6)
+    callsite (0.0.11)
     camertron-eprun (1.1.1)
     cancancan (1.10.1)
     canonical-rails (0.1.2)
@@ -108,6 +116,7 @@ GEM
     climate_control (0.1.0)
     cocaine (0.5.8)
       climate_control (>= 0.0.3, < 1.0)
+    coderay (1.1.1)
     coffee-rails (4.2.1)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0, < 5.2.x)
@@ -118,6 +127,7 @@ GEM
     concurrent-ruby (1.0.5)
     css_parser (1.4.10)
       addressable
+    debug_inspector (0.0.2)
     deface (1.2.0)
       nokogiri (~> 1.6)
       polyglot
@@ -169,6 +179,10 @@ GEM
       nokogiri (>= 1.5.9)
     mail (2.6.4)
       mime-types (>= 1.16, < 4)
+    meta_request (0.4.0)
+      callsite (~> 0.0, >= 0.0.11)
+      rack-contrib (~> 1.1)
+      railties (>= 3.0.0, < 5.1.0)
     method_source (0.8.2)
     mime-types (3.1)
       mime-types-data (~> 3.2015)
@@ -251,6 +265,8 @@ GEM
     rabl (0.13.1)
       activesupport (>= 2.3.14)
     rack (2.0.1)
+    rack-contrib (1.2.0)
+      rack (>= 0.9.1)
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.2)
@@ -414,6 +430,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  better_errors
+  binding_of_caller
   byebug
   capistrano-bundler (~> 1.2)
   capistrano-rails (~> 1.1)
@@ -425,6 +443,7 @@ DEPENDENCIES
   jbuilder (~> 2.5)
   jquery-rails
   listen (~> 3.0.5)
+  meta_request
   mysql2 (>= 0.3.18, < 0.5)
   omniauth-open_wechat
   puma (~> 3.0)

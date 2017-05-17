@@ -1,4 +1,3 @@
-
 <div id="social-signin-links">
   <% if (!spree_current_user || !spree_current_user.user_authentications) && Spree::AuthenticationMethod.active_authentication_methods? %>
       <h4><%= Spree.t(:sign_in_through_one_of_these_services) %></h4>
@@ -6,7 +5,7 @@
 
   <% Spree::AuthenticationMethod.available_for(@spree_user).each do |method| %>
       <%= link_to(content_tag(:span, "用#{method.provider}登陆"),
-                  omniauth_authorize_url(@spree_user, method.provider),
+                  omniauth_authorize_url(:spree_user, method.provider),
                   id: method.provider.to_url,
                   title: Spree.t(:sign_in_with, provider: method.provider)) if method.active %>
   <% end %>

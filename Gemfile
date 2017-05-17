@@ -51,6 +51,9 @@ group :development do
   gem 'capistrano-rvm'
   gem 'capistrano3-puma'
   gem 'capistrano3-nginx'
+  gem 'better_errors'
+  gem 'binding_of_caller'
+  gem 'meta_request'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -64,5 +67,5 @@ gem 'spree_gateway', '~> 3.2.0.beta'
 gem 'figaro'
 gem 'listen', '~> 3.0.5'
 
-gem 'omniauth-open_wechat'
-gem 'spree_social', github: 'spree-contrib/spree_social'
+gem "omniauth-open_wechat"
+gem 'spree_social', github: 'spree-contrib/spree_social', branch: 'master'
