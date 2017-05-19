@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170426030712) do
+ActiveRecord::Schema.define(version: 20170519044130) do
 
   create_table "friendly_id_slugs", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "slug",                      null: false
@@ -962,14 +962,26 @@ ActiveRecord::Schema.define(version: 20170426030712) do
     t.integer  "user_id"
     t.string   "provider"
     t.string   "uid"
+    t.string   "openid"
+    t.string   "unionid"
+    t.string   "nickname"
+    t.string   "sex"
+    t.string   "language"
+    t.string   "city"
+    t.string   "province"
+    t.string   "country"
+    t.string   "headimgurl"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["openid"], name: "open_idx_unique", unique: true, using: :btree
+    t.index ["unionid"], name: "union_idx_unique", unique: true, using: :btree
   end
 
   create_table "spree_users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "encrypted_password",     limit: 128
     t.string   "password_salt",          limit: 128
     t.string   "email"
+    t.string   "phone"
     t.string   "remember_token"
     t.string   "persistence_token"
     t.string   "reset_password_token"
@@ -999,6 +1011,7 @@ ActiveRecord::Schema.define(version: 20170426030712) do
     t.index ["bill_address_id"], name: "index_spree_users_on_bill_address_id", using: :btree
     t.index ["deleted_at"], name: "index_spree_users_on_deleted_at", using: :btree
     t.index ["email"], name: "email_idx_unique", unique: true, using: :btree
+    t.index ["phone"], name: "phone_idx_unique", unique: true, using: :btree
     t.index ["ship_address_id"], name: "index_spree_users_on_ship_address_id", using: :btree
     t.index ["spree_api_key"], name: "index_spree_users_on_spree_api_key", using: :btree
   end
