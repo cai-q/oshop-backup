@@ -20,6 +20,7 @@ Spree::User.class_eval do
         uid: omniauth['uid'],
         openid: omniauth['extra']['raw_info']['openid'],
         sex: omniauth['extra']['raw_info']['sex'],
+        nickname: omniauth['extra']['raw_info']['nickname'],
         language: omniauth['extra']['raw_info']['language'],
         city: omniauth['extra']['raw_info']['city'],
         province: omniauth['extra']['raw_info']['province'],
